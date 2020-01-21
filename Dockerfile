@@ -18,10 +18,11 @@ COPY --from=build /opt/xtools /opt/xtools
 
 RUN apt-get -y update --fix-missing && \
     apt-get upgrade -y && \
-    apt-get -y install --fix-missing make automake autoconf libtool gawk bc python && \
+    apt-get -y install --fix-missing make automake autoconf libtool gawk bc python libncurses-dev && \
     rm -rf /var/lib/apt/lists/*
 
 ENV CROSS_COMPILE arm-linux-
+ENV ARCH arm
 ENV PATH /opt/xtools/arm-cortexa5-linux-uclibcgnueabihf/bin:$PATH
 VOLUME /src
 WORKDIR /src
